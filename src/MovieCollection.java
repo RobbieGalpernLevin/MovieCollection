@@ -164,12 +164,122 @@ public class MovieCollection
   
   private void searchCast()
   {
-    /* TASK 4: IMPLEMENT ME! */
+    ArrayList<String> entireCast = new ArrayList<>();
+    System.out.print("Enter a person to search for: ");
+    String searchTerm = scanner.nextLine();
+
+    // prevent case sensitivity
+    searchTerm = searchTerm.toLowerCase();
+
+    // arraylist to hold search results
+    ArrayList<Movie> results = new ArrayList<Movie>();
+
+    // search through ALL movies in collection
+    for (int i = 0; i < movies.size(); i++)
+    {
+      String movieCast = movies.get(i).getCast();
+      movieCast = movieCast.toLowerCase();
+
+      if (movieCast.indexOf(searchTerm) != -1)
+      {
+        //add the Movie object to the results list
+        results.add(movies.get(i));
+      }
+    }
+
+    // sort the results by title
+    sortResults(results);
+
+    // now, display them all to the user
+    for (int i = 0; i < results.size(); i++)
+    {
+      ArrayList<String> addCastMembers = new ArrayList<>();
+      String cast = results.get(i).getCast();
+      String[] castList = cast.split("\\|");
+      for(String str : castList)
+      {
+        if(str.indexOf("searchTerm") != -1)
+        {
+          addCastMembers.add(str);
+        }
+      }
+      for()
+      entireCast.add(cast);
+
+      // this will print index 0 as choice 1 in the results list; better for user!
+      if(entireCast.indexOf(searchTerm) == -1)
+      {
+        int choiceNum = i + 1;
+        int idx = i;
+
+        System.out.println("" + choiceNum + ". " + entireCast.get(idx));
+      }
+    }
+
+    System.out.println("Which movie would you like to learn more about?");
+    System.out.print("Enter number: ");
+
+    int choice = scanner.nextInt();
+    scanner.nextLine();
+
+    Movie selectedMovie = results.get(choice - 1);
+
+    displayMovieInfo(selectedMovie);
+
+    System.out.println("\n ** Press Enter to Return to Main Menu **");
+    scanner.nextLine();
   }
 
   private void searchKeywords()
   {
-    /* TASK 3: IMPLEMENT ME! */
+    System.out.print("Enter a keyword search term: ");
+    String searchTerm = scanner.nextLine();
+
+    // prevent case sensitivity
+    searchTerm = searchTerm.toLowerCase();
+
+    // arraylist to hold search results
+    ArrayList<Movie> results = new ArrayList<Movie>();
+
+    // search through ALL movies in collection
+    for (int i = 0; i < movies.size(); i++)
+    {
+      String movieKeyword = movies.get(i).getKeywords();
+      movieKeyword = movieKeyword.toLowerCase();
+
+      if (movieKeyword.indexOf(searchTerm) != -1)
+      {
+        //add the Movie object to the results list
+        results.add(movies.get(i));
+      }
+    }
+
+    // sort the results by title
+    sortResults(results);
+
+    // now, display them all to the user
+    for (int i = 0; i < results.size(); i++)
+    {
+      String title = results.get(i).getTitle();
+
+      // this will print index 0 as choice 1 in the results list; better for user!
+      int choiceNum = i + 1;
+
+      System.out.println("" + choiceNum + ". " + title);
+    }
+
+    System.out.println("Which movie would you like to learn more about?");
+    System.out.print("Enter number: ");
+
+    int choice = scanner.nextInt();
+    scanner.nextLine();
+
+    Movie selectedMovie = results.get(choice - 1);
+
+    displayMovieInfo(selectedMovie);
+
+    System.out.println("\n ** Press Enter to Return to Main Menu **");
+    scanner.nextLine();
   }
   
   private void listGenres()
