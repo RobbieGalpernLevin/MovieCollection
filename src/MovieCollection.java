@@ -94,6 +94,7 @@ public class MovieCollection
     for (int i = 0; i < movies.size(); i++)
     {
       String movieTitle = movies.get(i).getTitle();
+
       movieTitle = movieTitle.toLowerCase();
 
       if (movieTitle.indexOf(searchTerm) != -1)

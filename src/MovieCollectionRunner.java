@@ -8,6 +8,7 @@ public class MovieCollectionRunner
     // in the MovieCollection class then write some test code here to create
     // a new MovieCollection from the movies in the movies_data.csv file
     // ** USE THE CEREAL COLLECTION SAMPLE PROJECT TO HELP YOU! **
+
     MovieCollection collection = new MovieCollection("src\\movies_data.csv");
     ArrayList<Movie> movieList = collection.getMovies();
     collection.menu();

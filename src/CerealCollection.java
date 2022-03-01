@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class CerealCollection
 {
 
+
   private ArrayList<Cereal> cereals;
   public CerealCollection(String fileName)
   {
@@ -24,7 +25,7 @@ public class CerealCollection
       FileReader fileReader = new FileReader(fileName);
       BufferedReader bufferedReader = new BufferedReader(fileReader);
       String line = bufferedReader.readLine();
-      
+
       cereals = new ArrayList<Cereal>();
       
       while ((line = bufferedReader.readLine()) != null) 
